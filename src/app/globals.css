@@ -1,26 +1,80 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-offwhite: #FFFCF8;
+  --color-brand-charcoal: #1D1D1D;
+  --color-brand-dark: #141414;
+  --color-brand-pink: #C9184A;
+  --color-brand-pink-dark: #A01242;
+  --color-brand-pink-light: #FFF0F3;
+  --color-brand-pink-subtle: #FFF5F7;
+  --color-brand-green: #267B43;
+  --color-brand-green-dark: #1E6135;
+  --color-brand-green-soft: #E9EEE5;
+  --color-brand-beige: #F4F0E8;
+  --color-brand-beige-light: #FAF7F2;
+  --color-brand-navy: #1C2C40;
+  --color-brand-muted: #77736E;
+  --color-brand-border: #E8E2D8;
+  --color-brand-card: #FFFFFF;
+
+  --font-serif: var(--font-playfair), "Playfair Display", Georgia, serif;
+  --font-sans: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FFFCF8;
+  --foreground: #1C2C40;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Editorial Typography Classes */
+.font-serif {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif !important;
+}
+
+.font-sans {
+  font-family: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif !important;
+}
+
+.font-display {
+  font-family: var(--font-playfair), "Playfair Display", Georgia, serif !important;
+}
+
+.text-editorial-title {
+  font-family: var(--font-serif);
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F0E8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C9184A;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A01242;
 }
