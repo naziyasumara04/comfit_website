@@ -29,37 +29,37 @@ export default function QualityProcessPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="py-14 sm:py-20 border-b border-stone-200/70">
+      <section className="py-10 sm:py-16 lg:py-20 border-b border-stone-200/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 items-center">
 
             {/* Left Narrative */}
             <div className="lg:col-span-7 flex flex-col justify-center">
-              <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-[#267B43] block mb-3">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider sm:tracking-[0.22em] font-semibold text-[#267B43] block mb-2 sm:mb-3">
                 COMFIT FOODS · CARE FROM FRUIT TO FINISH
               </span>
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#1C2C40] tracking-tight leading-[1.12]">
+              <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#1C2C40] tracking-tight leading-[1.14] sm:leading-[1.12]">
                 Thoughtful care.
                 <br />
                 Beautiful little possibilities.
               </h1>
-              <p className="mt-4 text-xs md:text-sm font-semibold tracking-[0.16em] uppercase text-[#C9184A]">
+              <p className="mt-3 sm:mt-4 text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider sm:tracking-[0.16em] uppercase text-[#C9184A]">
                 TASTE THE COLOURS OF JOY · PROCESS & STANDARDS
               </p>
-              <p className="mt-5 text-sm sm:text-base text-stone-600 leading-relaxed max-w-xl">
+              <p className="mt-4 sm:mt-5 text-xs sm:text-sm md:text-base text-stone-600 leading-relaxed max-w-xl">
                 From the first piece of papaya to the final sealed pouch, explore the journey behind a colourful baking ingredient — and the details that help you use it with confidence.
               </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                 <a
                   href="#process-steps"
-                  className="inline-flex items-center justify-center px-6 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs md:text-sm tracking-wider uppercase font-medium rounded transition-all duration-200 group shadow-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs md:text-sm tracking-wider uppercase font-semibold rounded-lg transition-all duration-200 group shadow-sm min-h-[44px]"
                 >
                   <span>Explore The 4 Steps</span>
                   <ArrowUpRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </a>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-6 py-3.5 border border-stone-300 hover:border-stone-900 text-[#1C2C40] text-xs md:text-sm tracking-wider uppercase font-medium rounded transition-all duration-200 group"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3.5 border border-stone-300 hover:border-stone-900 text-[#1C2C40] text-xs md:text-sm tracking-wider uppercase font-semibold rounded-lg transition-all duration-200 group bg-white/50 hover:bg-white min-h-[44px]"
                 >
                   <span>Request Specifications</span>
                   <ArrowUpRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-stone-400 group-hover:text-stone-900" />
@@ -68,7 +68,7 @@ export default function QualityProcessPage() {
             </div>
 
             {/* Right: Dual Photo Layout */}
-            <div className="lg:col-span-5 relative">
+            <div className="lg:col-span-5 relative w-full">
               <div className="relative rounded-2xl overflow-hidden shadow-lg border border-stone-200/90 bg-stone-100">
                 <div className="relative aspect-[4/3] w-full">
                   <Image
@@ -76,18 +76,19 @@ export default function QualityProcessPage() {
                     alt="Fresh raw papaya harvested in Gujarat"
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 40vw"
                   />
                 </div>
               </div>
 
               {/* Overlapping small image */}
-              <div className="absolute -bottom-6 -right-4 sm:-bottom-8 sm:-right-6 w-36 sm:w-44 aspect-square rounded-xl overflow-hidden shadow-2xl border-4 border-white hidden sm:block">
+              <div className="absolute -bottom-4 -right-2 sm:-bottom-8 sm:-right-6 w-28 sm:w-44 aspect-square rounded-xl overflow-hidden shadow-2xl border-2 sm:border-4 border-white hidden xs:block sm:block">
                 <Image
                   src="/images/about/tutti-frutti-bowl.jpg"
                   alt="Candied papaya cubes glistening"
                   fill
                   className="object-cover object-center"
+                  sizes="(max-width: 640px) 120px, 180px"
                 />
               </div>
             </div>
@@ -214,8 +215,8 @@ export default function QualityProcessPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
 
             {/* Table */}
-            <div className="lg:col-span-7 overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm border-t border-stone-200 divide-y divide-stone-200">
+            <div className="lg:col-span-7 overflow-x-auto smooth-scroll-x w-full">
+              <table className="w-full min-w-[420px] sm:min-w-0 text-left text-xs sm:text-sm border-t border-stone-200 divide-y divide-stone-200">
                 <tbody className="divide-y divide-stone-200">
                   <tr>
                     <td className="py-4 pr-4 font-semibold text-[#1C2C40] w-1/3">Product family</td>
@@ -298,10 +299,10 @@ export default function QualityProcessPage() {
               </p>
             </div>
 
-            <div>
+            <div className="w-full md:w-auto">
               <Link
                 href="/contact"
-                className="inline-flex items-center px-7 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs sm:text-sm uppercase tracking-wider font-semibold rounded-full shadow-sm hover:shadow-md transition-all duration-200 group"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs sm:text-sm uppercase tracking-wider font-semibold rounded-full shadow-sm hover:shadow-md transition-all duration-200 group min-h-[44px]"
               >
                 <span>Request documentation</span>
                 <ArrowUpRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -74,12 +74,12 @@ export const BulkOrderForm: React.FC<BulkOrderFormProps> = ({ initialProduct = '
   };
 
   return (
-    <div className="bg-white p-6 sm:p-10 rounded-2xl border border-stone-200 shadow-sm" id="trade-form">
+    <div className="bg-white p-4 sm:p-8 lg:p-10 rounded-2xl border border-stone-200 shadow-sm w-full" id="trade-form">
       <div className="flex items-center justify-between border-b border-stone-100 pb-4 mb-6">
-        <h3 className="font-serif text-2xl sm:text-3xl text-[#1C2C40]">
+        <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl text-[#1C2C40]">
           Your trade enquiry
         </h3>
-        <span className="text-[11px] text-stone-400 font-medium">
+        <span className="text-[10px] sm:text-[11px] text-stone-400 font-medium">
           * Required fields
         </span>
       </div>
@@ -296,15 +296,15 @@ export const BulkOrderForm: React.FC<BulkOrderFormProps> = ({ initialProduct = '
           <label className="block text-xs font-medium text-stone-700 mb-1">
             Attach a specification (optional)
           </label>
-          <label className="border border-dashed border-stone-300 rounded-lg p-4 flex items-center justify-between cursor-pointer hover:border-stone-400 bg-stone-50/50 transition-colors">
+          <label className="border border-dashed border-stone-300 rounded-lg p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 cursor-pointer hover:border-stone-400 bg-stone-50/50 transition-colors">
             <div className="flex items-center space-x-3">
-              <UploadCloud className="w-5 h-5 text-[#C9184A]" />
+              <UploadCloud className="w-5 h-5 text-[#C9184A] flex-shrink-0" />
               <div className="text-xs">
                 <span className="font-semibold text-[#C9184A]">Choose a file</span>
-                <span className="text-stone-500 ml-2">Product brief or specification document</span>
+                <span className="text-stone-500 ml-2 block sm:inline">Product brief or specification document</span>
               </div>
             </div>
-            <span className="text-[11px] text-stone-400">
+            <span className="text-[11px] text-stone-400 truncate max-w-[200px]">
               {fileName || 'No file selected'}
             </span>
             <input type="file" onChange={handleFileChange} className="hidden" />
@@ -312,12 +312,12 @@ export const BulkOrderForm: React.FC<BulkOrderFormProps> = ({ initialProduct = '
         </div>
 
         {/* Checkbox */}
-        <div className="flex items-start space-x-2 pt-1">
+        <div className="flex items-start space-x-2.5 pt-1">
           <input
             type="checkbox"
             id="tradeAgree"
             {...register('agreeToTerms')}
-            className="mt-1 w-4 h-4 text-[#C9184A] border-stone-300 rounded focus:ring-[#C9184A]"
+            className="mt-1 w-4 h-4 text-[#C9184A] border-stone-300 rounded focus:ring-[#C9184A] flex-shrink-0"
           />
           <label htmlFor="tradeAgree" className="text-[11px] text-stone-500 leading-normal">
             I agree to Comfit Foods using my details to respond to this enquiry. Please do not send sensitive personal information.
@@ -334,13 +334,13 @@ export const BulkOrderForm: React.FC<BulkOrderFormProps> = ({ initialProduct = '
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center justify-center px-8 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all duration-200 group shadow-md hover:shadow-lg disabled:opacity-70"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all duration-200 group shadow-md hover:shadow-lg disabled:opacity-70 min-h-[44px]"
           >
             <span>{isSubmitting ? 'Sending trade enquiry...' : 'Send trade enquiry'}</span>
             <ArrowUpRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
 
-          <p className="text-[11px] text-stone-400">
+          <p className="text-[11px] text-stone-400 sm:text-right sm:max-w-xs">
             This is an enquiry, not a confirmed order. Pricing and fulfilment details follow a discussion.
           </p>
         </div>

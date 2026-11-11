@@ -67,7 +67,7 @@ export default async function ProductDetailPage({
       {/* Breadcrumbs */}
       <div className="border-b border-stone-200/60 bg-[#FAF7F2] py-3">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center space-x-2 text-xs text-stone-500">
+          <nav className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs text-stone-500">
             <Link href="/" className="hover:text-stone-900 transition-colors">
               Home
             </Link>
@@ -76,7 +76,7 @@ export default async function ProductDetailPage({
               Our Products
             </Link>
             <span>/</span>
-            <span className="text-[#C9184A] font-medium">{product.name}</span>
+            <span className="text-[#C9184A] font-medium truncate max-w-[200px] sm:max-w-none">{product.name}</span>
           </nav>
         </div>
       </div>

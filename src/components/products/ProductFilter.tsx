@@ -42,17 +42,17 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({ initialProducts })
   return (
     <div>
       {/* Search & Filter Toolbar */}
-      <div className="bg-white p-5 sm:p-6 rounded-2xl border border-stone-200/90 shadow-sm mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200/90 shadow-sm mb-8 sm:mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
 
         {/* Color Tabs */}
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           {colorFilters.map((tab) => {
             const active = selectedColor === tab.value;
             return (
               <button
                 key={tab.value}
                 onClick={() => setSelectedColor(tab.value)}
-                className={`inline-flex items-center text-xs font-semibold uppercase tracking-wider px-4 py-2 rounded-full transition-all ${active
+                className={`inline-flex items-center text-xs font-semibold uppercase tracking-wider px-3.5 sm:px-4 py-2 rounded-full transition-all min-h-[38px] ${active
                     ? 'bg-[#1C2C40] text-white shadow-sm'
                     : 'bg-[#F4F0E8] text-stone-700 hover:bg-stone-200/80'
                   }`}

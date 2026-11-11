@@ -16,7 +16,7 @@ export const ComfitLogo: React.FC<ComfitLogoProps> = ({
     <Link href="/" className={`inline-flex flex-col group select-none ${className}`}>
       <div className="flex items-center space-x-0.5">
         <span
-          className="font-black text-2xl md:text-3xl tracking-tight text-[#C9184A] transition-transform duration-300 group-hover:scale-[1.02]"
+          className="font-black text-xl sm:text-2xl md:text-3xl tracking-tight text-[#C9184A] transition-transform duration-300 group-hover:scale-[1.02]"
           style={{
             fontFamily: 'system-ui, -apple-system, sans-serif',
             letterSpacing: '-0.03em',

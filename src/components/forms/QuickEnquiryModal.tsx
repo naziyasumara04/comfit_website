@@ -57,11 +57,11 @@ export const QuickEnquiryModal: React.FC<QuickEnquiryModalProps> = ({ product, o
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-[#FFFCF8] rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 border border-stone-200 relative animate-in fade-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+      <div className="bg-[#FFFCF8] rounded-2xl shadow-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto p-5 sm:p-8 border border-stone-200 relative animate-in fade-in zoom-in-95 duration-200 my-auto">
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-stone-400 hover:text-stone-800 p-1 rounded-full hover:bg-stone-100 transition-colors"
+          className="absolute top-3 right-3 sm:top-5 sm:right-5 text-stone-400 hover:text-stone-800 p-2 rounded-full hover:bg-stone-100 transition-colors min-h-[40px] min-w-[40px] flex items-center justify-center"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -195,7 +195,7 @@ export const QuickEnquiryModal: React.FC<QuickEnquiryModalProps> = ({ product, o
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white uppercase tracking-wider font-semibold rounded-full text-xs transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-2"
+                  className="w-full py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white uppercase tracking-wider font-semibold rounded-full text-xs transition-all shadow-md hover:shadow-lg flex items-center justify-center space-x-2 min-h-[44px]"
                 >
                   <span>{isSubmitting ? 'Submitting...' : 'Request Trade Pricing'}</span>
                   <ArrowRight className="w-4 h-4 ml-1" />

@@ -118,21 +118,21 @@ export const ReviewSection: React.FC = () => {
           </h2>
         </div>
 
-        {/* 3 Main Solid Colorful Testimonial Cards (Matching Screenshot 2 exactly) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+        {/* 3 Main Solid Colorful Testimonial Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {reviews.map((rev) => (
             <div
               key={rev.id}
               style={{ backgroundColor: rev.bgColor }}
-              className="rounded-2xl sm:rounded-3xl p-8 sm:p-10 text-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[220px]"
+              className="rounded-2xl sm:rounded-3xl p-5 sm:p-7 lg:p-9 text-white shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between min-h-[200px] sm:min-h-[220px]"
             >
               {/* Quote text in Serif Italic */}
-              <blockquote className="font-serif italic text-base sm:text-lg leading-relaxed text-white">
+              <blockquote className="font-serif italic text-sm sm:text-base lg:text-lg leading-relaxed text-white">
                 &ldquo;{rev.quote}&rdquo;
               </blockquote>
 
               {/* Author in bold uppercase sans-serif */}
-              <div className="mt-8 pt-4 border-t border-white/20 flex items-center justify-between">
+              <div className="mt-6 sm:mt-8 pt-3.5 sm:pt-4 border-t border-white/20 flex items-center justify-between">
                 <div>
                   <span className="text-white/95 text-xs font-bold tracking-widest uppercase block font-sans">
                     — {rev.name}
@@ -158,7 +158,7 @@ export const ReviewSection: React.FC = () => {
         </div>
 
         {/* Review Form Header & Card */}
-        <div className="pt-4 sm:pt-8">
+        <div className="pt-2 sm:pt-6">
           {/* Success Alert Banner */}
           {submittedSuccess && (
             <div className="max-w-3xl mx-auto mb-6 p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-start space-x-3.5 text-emerald-900 shadow-sm animate-in fade-in duration-300">
@@ -173,14 +173,14 @@ export const ReviewSection: React.FC = () => {
           )}
 
           {isFormOpen ? (
-            <div className="max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/90 shadow-xl transition-all duration-300">
-              <div className="flex items-start justify-between gap-4 mb-8 pb-5 border-b border-stone-100">
+            <div className="max-w-3xl mx-auto bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-10 border border-stone-200/90 shadow-xl transition-all duration-300">
+              <div className="flex items-start justify-between gap-3 sm:gap-4 mb-6 sm:mb-8 pb-4 sm:pb-5 border-b border-stone-100">
                 <div className="space-y-1.5">
                   <span className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-pink-50 border border-pink-200/80 text-[10px] uppercase tracking-widest font-semibold text-[#C9184A]">
                     <Sparkles className="w-3 h-3 text-[#C9184A]" />
                     <span>COMMUNITY VOICES</span>
                   </span>
-                  <h3 className="font-serif text-2xl sm:text-3xl text-[#1C2C40] tracking-tight">
+                  <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl text-[#1C2C40] tracking-tight">
                     Share Your Comfit Experience
                   </h3>
                   <p className="text-xs sm:text-sm text-stone-500 leading-relaxed">
@@ -191,7 +191,7 @@ export const ReviewSection: React.FC = () => {
                   type="button"
                   onClick={() => setIsFormOpen(false)}
                   title="Minimize form"
-                  className="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors flex-shrink-0"
+                  className="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors flex-shrink-0 min-h-[40px] min-w-[40px] flex items-center justify-center"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -310,7 +310,7 @@ export const ReviewSection: React.FC = () => {
 
               {/* Form Buttons */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-stone-100">
-                <span className="text-[11px] text-stone-400">
+                <span className="text-[11px] text-stone-400 text-center sm:text-left">
                   Reviews are instantly verified and published to the website.
                 </span>
 
@@ -318,7 +318,7 @@ export const ReviewSection: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsFormOpen(false)}
-                    className="w-1/2 sm:w-auto px-5 py-2.5 rounded-xl border border-stone-200 text-stone-600 hover:text-stone-900 text-xs uppercase tracking-wider font-semibold transition-colors"
+                    className="w-1/2 sm:w-auto px-5 py-3 rounded-xl border border-stone-200 text-stone-600 hover:text-stone-900 text-xs uppercase tracking-wider font-semibold transition-colors min-h-[44px]"
                   >
                     Cancel
                   </button>
@@ -326,7 +326,7 @@ export const ReviewSection: React.FC = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-1/2 sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-2.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs uppercase tracking-wider font-semibold rounded-xl shadow-sm hover:shadow-md transition-all disabled:opacity-60"
+                    className="w-1/2 sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs uppercase tracking-wider font-semibold rounded-xl shadow-sm hover:shadow-md transition-all disabled:opacity-60 min-h-[44px]"
                   >
                     <Send className="w-3.5 h-3.5" />
                     <span>{isSubmitting ? 'Posting...' : 'Submit Review'}</span>
@@ -337,13 +337,13 @@ export const ReviewSection: React.FC = () => {
             </form>
           </div>
         ) : (
-          <div className="text-center pt-2">
+          <div className="text-center pt-2 px-2">
             <button
               type="button"
               onClick={() => setIsFormOpen(true)}
-              className="inline-flex items-center space-x-2.5 px-7 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs uppercase tracking-wider font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-200 group"
+              className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-5 sm:px-7 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs uppercase tracking-wider font-semibold rounded-full shadow-md hover:shadow-lg transition-all duration-200 group min-h-[44px]"
             >
-              <MessageSquarePlus className="w-4 h-4 transition-transform group-hover:scale-110" />
+              <MessageSquarePlus className="w-4 h-4 transition-transform group-hover:scale-110 flex-shrink-0" />
               <span>Write a Review / Share Your Story</span>
             </button>
           </div>

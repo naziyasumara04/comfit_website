@@ -22,10 +22,21 @@ export const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on path change
+  // Close mobile menu on path change and manage body scroll lock
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    if (mobileMenuOpen || searchOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen, searchOpen]);
 
   const isActive = (href: string) => {
     if (href === '/') return pathname === '/';
@@ -113,15 +124,16 @@ export const Navbar: React.FC = () => {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[60px] z-40 bg-[#1A1A1A] border-t border-stone-800 lg:hidden flex flex-col justify-between px-6 py-8 overflow-y-auto">
-          <nav className="flex flex-col space-y-6">
+        <div className="fixed inset-x-0 bottom-0 top-[56px] sm:top-[64px] z-40 bg-[#1A1A1A] border-t border-stone-800 lg:hidden flex flex-col justify-between px-5 sm:px-8 py-6 sm:py-8 overflow-y-auto">
+          <nav className="flex flex-col space-y-4 sm:space-y-6">
             {NAV_LINKS.map((link) => {
               const active = isActive(link.href);
               return (
                 <Link
                   key={link.name}
                   href={link.href}
-                  className={`text-lg tracking-wider uppercase font-medium flex items-center justify-between border-b border-stone-800/80 pb-3 ${
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-base sm:text-lg tracking-wider uppercase font-medium flex items-center justify-between border-b border-stone-800/80 pb-3 min-h-[44px] ${
                     active ? 'text-[#C9184A] font-semibold' : 'text-stone-200'
                   }`}
                 >
@@ -135,13 +147,18 @@ export const Navbar: React.FC = () => {
           <div className="mt-8 pt-6 border-t border-stone-800 flex flex-col space-y-4">
             <Link
               href="/bulk-orders"
-              className="w-full text-center py-3 bg-[#C9184A] text-white uppercase text-xs tracking-widest font-semibold rounded-md shadow-md"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full text-center py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white uppercase text-xs tracking-widest font-semibold rounded-lg shadow-md transition-colors"
             >
               Let&apos;s Talk Trade ↗
             </Link>
             <div className="text-center text-xs text-stone-400">
-              <p>{COMPANY_INFO.phoneFormatted}</p>
-              <p className="mt-1">{COMPANY_INFO.email}</p>
+              <a href={`tel:${COMPANY_INFO.phone}`} className="hover:text-stone-200 block py-1">
+                {COMPANY_INFO.phoneFormatted}
+              </a>
+              <a href={`mailto:${COMPANY_INFO.email}`} className="hover:text-stone-200 block py-1">
+                {COMPANY_INFO.email}
+              </a>
             </div>
           </div>
         </div>
@@ -149,20 +166,21 @@ export const Navbar: React.FC = () => {
 
       {/* Search Modal */}
       {searchOpen && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-start justify-center pt-24 px-4">
-          <div className="bg-[#FFFCF8] rounded-xl shadow-2xl max-w-lg w-full p-6 border border-stone-200">
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-start sm:items-center justify-center pt-16 sm:pt-0 p-4 overflow-y-auto">
+          <div className="bg-[#FFFCF8] rounded-2xl shadow-2xl max-w-lg w-full p-5 sm:p-6 border border-stone-200 my-auto">
             <div className="flex items-center justify-between pb-4 border-b border-stone-200">
-              <h3 className="font-serif text-xl text-[#1C2C40]">Search Comfit Foods</h3>
+              <h3 className="font-serif text-lg sm:text-xl text-[#1C2C40]">Search Comfit Foods</h3>
               <button
                 onClick={() => setSearchOpen(false)}
-                className="text-stone-500 hover:text-stone-800 p-1"
+                className="text-stone-500 hover:text-stone-800 p-2 rounded-full hover:bg-stone-100 min-h-[40px] min-w-[40px] flex items-center justify-center"
+                aria-label="Close search"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
             <div className="mt-4">
               <div className="relative">
-                <Search className="absolute left-3 top-3 w-5 h-5 text-stone-400" />
+                <Search className="absolute left-3.5 top-3.5 w-4 h-4 text-stone-400" />
                 <input
                   type="text"
                   placeholder="Search products, packaging, applications..."
@@ -175,7 +193,7 @@ export const Navbar: React.FC = () => {
 
               {/* Quick Suggestion Links */}
               <div className="mt-6">
-                <p className="text-xs font-semibold text-stone-400 uppercase tracking-wider mb-2">
+                <p className="text-[11px] font-semibold text-stone-400 uppercase tracking-wider mb-2.5">
                   Popular Searches
                 </p>
                 <div className="flex flex-wrap gap-2">

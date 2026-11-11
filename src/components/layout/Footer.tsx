@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
               <p>
                 <a
                   href={`mailto:${COMPANY_INFO.email}`}
-                  className="hover:text-white transition-colors text-stone-200"
+                  className="hover:text-white transition-colors text-stone-200 break-all inline-block py-0.5"
                 >
                   {COMPANY_INFO.email}
                 </a>
@@ -117,7 +117,7 @@ export const Footer: React.FC = () => {
               <p>
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
-                  className="hover:text-white transition-colors font-medium text-stone-100"
+                  className="hover:text-white transition-colors font-medium text-stone-100 inline-block py-0.5"
                 >
                   {COMPANY_INFO.phoneFormatted}
                 </a>
@@ -130,7 +130,7 @@ export const Footer: React.FC = () => {
             <div className="mt-6 pt-4 border-t border-stone-800/60">
               <Link
                 href="/admin/login"
-                className="text-[10px] text-stone-500 hover:text-stone-300 uppercase tracking-widest"
+                className="text-[10px] text-stone-500 hover:text-stone-300 uppercase tracking-widest inline-block py-1"
               >
                 Staff Portal
               </Link>
@@ -139,7 +139,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-3 text-center sm:text-left">
           <p>{COMPANY_INFO.copyright}</p>
           <p className="text-stone-400 font-medium">{COMPANY_INFO.madeIn}</p>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Mail, Phone, Calendar, MessageSquare, Reply } from 'lucide-react';
+import { Mail, Phone, Reply } from 'lucide-react';
 import { AdminHeader } from '@/components/admin/AdminHeader';
 import { ContactMessage } from '@/types';
 import { getContactMessages } from '@/services/contact.service';
@@ -28,7 +28,7 @@ export default function AdminMessagesPage() {
         subtitle="Manage general inquiries, sample requests, and customer messages submitted from the contact page."
       />
 
-      <div className="p-6 sm:p-8 space-y-6 max-w-7xl">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6 max-w-7xl w-full">
         <div className="flex items-center justify-between">
           <p className="text-xs text-stone-500">
             Total messages: <span className="font-semibold text-stone-800">{messages.length}</span>
@@ -42,11 +42,11 @@ export default function AdminMessagesPage() {
             No contact messages received yet.
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {messages.map((msg) => (
               <div
                 key={msg.id}
-                className="bg-white rounded-xl border border-stone-200/90 shadow-sm p-6 flex flex-col justify-between space-y-4 hover:border-stone-300 transition-colors"
+                className="bg-white rounded-xl border border-stone-200/90 shadow-sm p-4 sm:p-6 flex flex-col justify-between space-y-4 hover:border-stone-300 transition-colors"
               >
                 <div>
                   <div className="flex items-center justify-between border-b border-stone-100 pb-3 mb-3">
@@ -87,7 +87,7 @@ export default function AdminMessagesPage() {
                 <div className="pt-2 flex justify-end">
                   <a
                     href={`mailto:${msg.email}?subject=Re:%20${encodeURIComponent(msg.subject)}`}
-                    className="inline-flex items-center space-x-1.5 px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white text-xs font-medium rounded transition-colors"
+                    className="w-full sm:w-auto inline-flex items-center justify-center space-x-1.5 px-4 py-2.5 bg-stone-900 hover:bg-stone-800 text-white text-xs font-medium rounded transition-colors min-h-[40px]"
                   >
                     <Reply className="w-3.5 h-3.5" />
                     <span>Reply to {msg.name.split(' ')[0]}</span>
