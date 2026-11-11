@@ -7,6 +7,26 @@ let inMemoryProducts: Product[] = [...INITIAL_PRODUCTS];
 
 export async function getProducts(options?: { activeOnly?: boolean; featuredOnly?: boolean }): Promise<Product[]> {
   try {
+    // If in browser, prefer fresh data from /api/products or Supabase
+    if (typeof window !== 'undefined') {
+      try {
+        const queryParams = new URLSearchParams();
+        if (options?.activeOnly !== undefined) queryParams.set('active', String(options.activeOnly));
+        if (options?.featuredOnly !== undefined) queryParams.set('featured', String(options.featuredOnly));
+
+        const res = await fetch(`/api/products?${queryParams.toString()}`, { cache: 'no-store' });
+        if (res.ok) {
+          const data = await res.json();
+          if (Array.isArray(data) && data.length > 0) {
+            inMemoryProducts = data;
+            return data as Product[];
+          }
+        }
+      } catch (fetchErr) {
+        console.warn('API products fetch failed, checking client Supabase:', fetchErr);
+      }
+    }
+
     const supabase = createClient();
     if (supabase) {
       let query = supabase.from('products').select('*');
@@ -18,6 +38,7 @@ export async function getProducts(options?: { activeOnly?: boolean; featuredOnly
       }
       const { data, error } = await query.order('created_at', { ascending: true });
       if (!error && data && data.length > 0) {
+        inMemoryProducts = data as Product[];
         return data as Product[];
       }
     }
@@ -65,6 +86,19 @@ export async function createProduct(productData: Omit<Product, 'id' | 'created_a
   };
 
   try {
+    if (typeof window !== 'undefined') {
+      const res = await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(productData),
+      });
+      if (res.ok) {
+        const created = await res.json();
+        inMemoryProducts.unshift(created);
+        return created as Product;
+      }
+    }
+
     const supabase = createClient();
     if (supabase) {
       const { data, error } = await supabase
@@ -73,6 +107,7 @@ export async function createProduct(productData: Omit<Product, 'id' | 'created_a
         .select()
         .single();
       if (!error && data) {
+        inMemoryProducts.unshift(data as Product);
         return data as Product;
       }
     }
@@ -86,6 +121,20 @@ export async function createProduct(productData: Omit<Product, 'id' | 'created_a
 
 export async function updateProduct(id: string, updates: Partial<Product>): Promise<Product | null> {
   try {
+    if (typeof window !== 'undefined') {
+      const res = await fetch('/api/products', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, updates }),
+      });
+      if (res.ok) {
+        const updated = await res.json();
+        const idx = inMemoryProducts.findIndex(p => p.id === id);
+        if (idx !== -1) inMemoryProducts[idx] = updated;
+        return updated as Product;
+      }
+    }
+
     const supabase = createClient();
     if (supabase) {
       const { data, error } = await supabase
@@ -95,6 +144,8 @@ export async function updateProduct(id: string, updates: Partial<Product>): Prom
         .select()
         .single();
       if (!error && data) {
+        const idx = inMemoryProducts.findIndex(p => p.id === id);
+        if (idx !== -1) inMemoryProducts[idx] = data as Product;
         return data as Product;
       }
     }
@@ -112,10 +163,23 @@ export async function updateProduct(id: string, updates: Partial<Product>): Prom
 
 export async function deleteProduct(id: string): Promise<boolean> {
   try {
+    if (typeof window !== 'undefined') {
+      const res = await fetch(`/api/products?id=${id}`, {
+        method: 'DELETE',
+      });
+      if (res.ok) {
+        inMemoryProducts = inMemoryProducts.filter(p => p.id !== id);
+        return true;
+      }
+    }
+
     const supabase = createClient();
     if (supabase) {
       const { error } = await supabase.from('products').delete().eq('id', id);
-      if (!error) return true;
+      if (!error) {
+        inMemoryProducts = inMemoryProducts.filter(p => p.id !== id);
+        return true;
+      }
     }
   } catch (err) {
     console.warn('Supabase delete error:', err);
@@ -124,4 +188,3 @@ export async function deleteProduct(id: string): Promise<boolean> {
   inMemoryProducts = inMemoryProducts.filter(p => p.id !== id);
   return true;
 }
-
