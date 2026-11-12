@@ -4,16 +4,16 @@ import { INSPIRATIONS } from '@/lib/constants';
 
 export const CreativeSection: React.FC = () => {
   return (
-    <section className="bg-[#F4F0E8] py-16 sm:py-24 border-b border-stone-300/60">
+    <section className="bg-[#F4F0E8] py-12 sm:py-20 lg:py-24 border-b border-stone-300/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 sm:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-8 sm:mb-12 lg:mb-16">
           <div className="lg:col-span-8">
-            <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-stone-500 block mb-2">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-wider sm:tracking-[0.22em] font-semibold text-stone-500 block mb-2">
               THE INGREDIENT SOUL OF CREATIVITY
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1C2C40] leading-tight tracking-tight">
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#1C2C40] leading-tight tracking-tight">
               Inspiring Creations, One Colourful Bite at a Time.
             </h2>
           </div>

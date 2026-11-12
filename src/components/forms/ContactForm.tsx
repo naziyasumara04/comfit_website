@@ -44,9 +44,9 @@ export const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="bg-white p-6 sm:p-8 rounded-xl border border-stone-200/90 shadow-sm">
+    <div className="bg-white p-4 sm:p-8 rounded-2xl border border-stone-200/90 shadow-sm w-full">
       <div className="mb-6">
-        <h3 className="font-serif text-2xl sm:text-3xl text-[#1C2C40]">
+        <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl text-[#1C2C40]">
           Leave us a little note.
         </h3>
         <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed">
@@ -196,7 +196,7 @@ export const ContactForm: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="inline-flex items-center justify-center px-8 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all duration-200 group shadow-md hover:shadow-lg disabled:opacity-70"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all duration-200 group shadow-md hover:shadow-lg disabled:opacity-70 min-h-[44px]"
           >
             <span>{isSubmitting ? 'Sending message...' : 'Send your message'}</span>
             <ArrowUpRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

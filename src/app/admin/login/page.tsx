@@ -58,19 +58,19 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F0E8] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#F4F0E8] flex flex-col justify-center py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
         <ComfitLogo variant="dark" />
-        <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-stone-500 block mt-3">
+        <span className="text-[10px] sm:text-[11px] uppercase tracking-wider sm:tracking-[0.22em] font-semibold text-stone-500 block mt-3">
           SECURE MANAGEMENT PORTAL
         </span>
-        <h2 className="mt-2 font-serif text-3xl text-[#1C2C40]">
+        <h2 className="mt-2 font-serif text-2xl sm:text-3xl text-[#1C2C40]">
           Sign in to Admin Dashboard
         </h2>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
-        <div className="bg-white py-8 px-6 sm:px-10 shadow-lg rounded-2xl border border-stone-200">
+      <div className="mt-6 sm:mt-8 sm:mx-auto sm:w-full sm:max-w-md w-full">
+        <div className="bg-white py-6 sm:py-8 px-4 sm:px-10 shadow-lg rounded-2xl border border-stone-200">
           {error && (
             <div className="mb-6 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center space-x-2 text-xs text-red-700">
               <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -78,7 +78,7 @@ export default function AdminLoginPage() {
             </div>
           )}
 
-          <form onSubmit={handleLogin} className="space-y-5">
+          <form onSubmit={handleLogin} className="space-y-4 sm:space-y-5">
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-1">
                 Admin Email
@@ -116,7 +116,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs uppercase tracking-wider font-semibold rounded-lg shadow-sm transition-colors flex items-center justify-center space-x-2 disabled:opacity-70"
+              className="w-full py-3.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs uppercase tracking-wider font-semibold rounded-lg shadow-sm transition-colors flex items-center justify-center space-x-2 disabled:opacity-70 min-h-[44px]"
             >
               <span>{loading ? 'Authenticating...' : 'Sign In to Console'}</span>
               <ArrowRight className="w-4 h-4" />
@@ -136,7 +136,7 @@ export default function AdminLoginPage() {
               <button
                 type="button"
                 onClick={handleQuickDemo}
-                className="w-full py-2 bg-stone-900 hover:bg-stone-800 text-white text-[11px] uppercase tracking-wider font-medium rounded transition-colors"
+                className="w-full py-2.5 bg-stone-900 hover:bg-stone-800 text-white text-[11px] uppercase tracking-wider font-semibold rounded-lg transition-colors min-h-[40px]"
               >
                 Instant Demo Admin Login
               </button>

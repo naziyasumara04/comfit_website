@@ -31,20 +31,20 @@ export default async function ProductsPage() {
         </div>
       </div>
 
-      {/* Header Banner: Master Home Page Layout & Theme */}
-      <section className="py-14 sm:py-20 border-b border-stone-200/70">
+      {/* Header Banner */}
+      <section className="py-10 sm:py-16 lg:py-20 border-b border-stone-200/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <span className="text-[11px] uppercase tracking-[0.22em] font-semibold text-[#267B43] block mb-2">
+            <span className="text-[10px] sm:text-[11px] uppercase tracking-wider sm:tracking-[0.22em] font-semibold text-[#267B43] block mb-2">
               THE COMFIT COLLECTION · SABARKANTHA, GUJARAT
             </span>
-            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-[#1C2C40] tracking-tight leading-[1.12]">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#1C2C40] tracking-tight leading-[1.14] sm:leading-[1.12]">
               Find your colour of joy.
             </h1>
-            <p className="mt-4 text-xs md:text-sm font-semibold tracking-[0.16em] uppercase text-[#C9184A]">
+            <p className="mt-3 sm:mt-4 text-xs md:text-sm font-semibold tracking-wider sm:tracking-[0.16em] uppercase text-[#C9184A]">
               TASTE THE COLOURS OF JOY · CANDIED PAPAYA RANGE
             </p>
-            <p className="mt-5 text-sm sm:text-base text-stone-600 leading-relaxed">
+            <p className="mt-4 sm:mt-5 text-xs sm:text-sm md:text-base text-stone-600 leading-relaxed">
               Explore our complete range of candied papaya Tutti Frutti. Meticulously diced, gently candied and vacuum-sealed for consistent culinary excellence in bakeries and kitchens nationwide.
             </p>
           </div>
@@ -52,7 +52,7 @@ export default async function ProductsPage() {
       </section>
 
       {/* Products Listing & Filters */}
-      <section className="py-12 sm:py-16">
+      <section className="py-8 sm:py-14 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ProductFilter initialProducts={products} />
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Package, Inbox, MessageSquare, Clock, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { Package, Inbox, MessageSquare, Clock, ArrowUpRight } from 'lucide-react';
 import { AdminHeader } from '@/components/admin/AdminHeader';
 import { getProducts } from '@/services/product.service';
 import { getBulkInquiries } from '@/services/inquiry.service';
@@ -56,27 +56,27 @@ export default async function AdminDashboardPage() {
         subtitle="Manage product catalogue, review trade inquiries, and track incoming messages."
       />
 
-      <div className="p-6 sm:p-8 space-y-8 max-w-7xl">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8 max-w-7xl w-full">
         {/* Metric Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           {stats.map((stat) => {
             const Icon = stat.icon;
             return (
               <Link
                 key={stat.name}
                 href={stat.href}
-                className="bg-white p-5 rounded-xl border border-stone-200/90 shadow-sm hover:shadow-md transition-all group"
+                className="bg-white p-4 sm:p-5 rounded-xl border border-stone-200/90 shadow-sm hover:shadow-md transition-all group"
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold uppercase tracking-wider text-stone-500">
+                  <span className="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-stone-500">
                     {stat.name}
                   </span>
                   <div className={`w-8 h-8 rounded-lg ${stat.bgColor} ${stat.color} flex items-center justify-center`}>
                     <Icon className="w-4 h-4" />
                   </div>
                 </div>
-                <div className="mt-4 flex items-baseline justify-between">
-                  <span className="font-serif text-3xl font-semibold text-[#1C2C40]">
+                <div className="mt-3 sm:mt-4 flex items-baseline justify-between">
+                  <span className="font-serif text-2xl sm:text-3xl font-semibold text-[#1C2C40]">
                     {stat.value}
                   </span>
                   <span className="text-xs text-stone-400 group-hover:text-stone-800 flex items-center transition-colors">
@@ -90,9 +90,9 @@ export default async function AdminDashboardPage() {
 
         {/* Recent Inquiries List */}
         <div className="bg-white rounded-xl border border-stone-200/90 shadow-sm overflow-hidden">
-          <div className="p-5 sm:p-6 border-b border-stone-100 flex items-center justify-between">
+          <div className="p-4 sm:p-6 border-b border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <h3 className="font-serif text-lg text-[#1C2C40]">
+              <h3 className="font-serif text-base sm:text-lg text-[#1C2C40]">
                 Recent Trade Inquiries
               </h3>
               <p className="text-xs text-stone-500 mt-0.5">
@@ -101,14 +101,14 @@ export default async function AdminDashboardPage() {
             </div>
             <Link
               href="/admin/inquiries"
-              className="text-xs font-semibold text-[#C9184A] hover:underline"
+              className="text-xs font-semibold text-[#C9184A] hover:underline py-1"
             >
               View all inquiries →
             </Link>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs divide-y divide-stone-200">
+          <div className="overflow-x-auto smooth-scroll-x">
+            <table className="w-full min-w-[560px] text-left text-xs divide-y divide-stone-200">
               <thead className="bg-[#FAF7F2] text-stone-500 font-semibold uppercase tracking-wider">
                 <tr>
                   <th className="py-3 px-6">Buyer / Company</th>
@@ -168,7 +168,7 @@ export default async function AdminDashboardPage() {
           </div>
           <Link
             href="/admin/products"
-            className="px-5 py-2.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs uppercase tracking-wider font-semibold rounded-md shadow-sm transition-colors whitespace-nowrap"
+            className="w-full sm:w-auto text-center px-5 py-2.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs uppercase tracking-wider font-semibold rounded-md shadow-sm transition-colors whitespace-nowrap min-h-[40px] flex items-center justify-center"
           >
             Manage Products
           </Link>

@@ -24,17 +24,17 @@ export const Accordion: React.FC<AccordionProps> = ({ items }) => {
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         return (
-          <div key={index} className="py-5">
+          <div key={index} className="py-4 sm:py-5">
             <button
               type="button"
               onClick={() => toggle(index)}
-              className="w-full flex items-center justify-between text-left group"
+              className="w-full flex items-center justify-between text-left group min-h-[44px] py-1"
               aria-expanded={isOpen}
             >
-              <span className="font-serif text-lg sm:text-xl text-[#1C2C40] group-hover:text-[#C9184A] transition-colors pr-4">
+              <span className="font-serif text-base sm:text-lg md:text-xl text-[#1C2C40] group-hover:text-[#C9184A] transition-colors pr-3 sm:pr-4">
                 {item.question}
               </span>
-              <span className="text-stone-400 group-hover:text-stone-800 transition-transform duration-200">
+              <span className="text-stone-400 group-hover:text-stone-800 transition-transform duration-200 flex-shrink-0">
                 <ChevronDown
                   className={`w-5 h-5 transition-transform duration-200 ${
                     isOpen ? 'rotate-180 text-[#C9184A]' : ''

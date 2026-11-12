@@ -66,9 +66,9 @@ export default function AdminProductsPage() {
         subtitle="Create, update, and manage published Tutti Frutti products and master carton specifications."
       />
 
-      <div className="p-6 sm:p-8 space-y-6 max-w-7xl">
+      <div className="p-4 sm:p-6 lg:p-8 space-y-6 max-w-7xl w-full">
         {/* Actions Bar */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <p className="text-xs text-stone-500">
             Total products: <span className="font-semibold text-stone-800">{products.length}</span>
           </p>
@@ -78,7 +78,7 @@ export default function AdminProductsPage() {
               setEditingProduct(null);
               setIsModalOpen(true);
             }}
-            className="inline-flex items-center px-4 py-2.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs font-semibold uppercase tracking-wider rounded-lg shadow-sm transition-colors space-x-1.5"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2.5 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs font-semibold uppercase tracking-wider rounded-lg shadow-sm transition-colors space-x-1.5 min-h-[42px]"
           >
             <Plus className="w-4 h-4" />
             <span>Add New Product</span>
@@ -90,8 +90,8 @@ export default function AdminProductsPage() {
           {loading ? (
             <div className="p-12 text-center text-xs text-stone-400">Loading catalogue...</div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs divide-y divide-stone-200">
+            <div className="overflow-x-auto smooth-scroll-x">
+              <table className="w-full min-w-[640px] text-left text-xs divide-y divide-stone-200">
                 <thead className="bg-[#FAF7F2] text-stone-500 font-semibold uppercase tracking-wider">
                   <tr>
                     <th className="py-3 px-6">Product</th>

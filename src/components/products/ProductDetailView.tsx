@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Check, Package, Clock, ShieldCheck, Heart } from 'lucide-react';
+import { ArrowUpRight, Check, Package, Clock } from 'lucide-react';
 import { Product } from '@/types';
 import { QuickEnquiryModal } from '@/components/forms/QuickEnquiryModal';
 
@@ -78,11 +78,11 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               </span>
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-[#1C2C40] tracking-tight leading-[1.12]">
+            <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#1C2C40] tracking-tight leading-[1.14] sm:leading-[1.12]">
               {product.name}
             </h1>
 
-            <p className="mt-3 text-xs sm:text-sm font-semibold tracking-[0.16em] uppercase text-[#C9184A]">
+            <p className="mt-2.5 sm:mt-3 text-xs sm:text-sm font-semibold tracking-wider sm:tracking-[0.16em] uppercase text-[#C9184A]">
               {product.short_description}
             </p>
           </div>
@@ -97,7 +97,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
               <span className="text-[11px] uppercase tracking-wider font-semibold text-stone-700 block mb-2">
                 Recommended Applications
               </span>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {product.applications.map((app) => (
                   <span
                     key={app}
@@ -112,7 +112,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
           )}
 
           {/* Quick Specifications Highlights */}
-          <div className="grid grid-cols-2 gap-4 py-4 border-y border-stone-200 text-xs">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4 py-4 border-y border-stone-200 text-xs">
             <div className="flex items-start space-x-2.5">
               <Package className="w-4 h-4 text-[#C9184A] flex-shrink-0 mt-0.5" />
               <div>
@@ -130,11 +130,11 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
           </div>
 
           {/* Action CTAs */}
-          <div className="pt-2 flex flex-col sm:flex-row gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <button
               type="button"
               onClick={() => setIsModalOpen(true)}
-              className="flex-1 py-3.5 px-6 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-center space-x-2 group"
+              className="w-full sm:flex-1 py-3.5 px-6 bg-[#C9184A] hover:bg-[#a5133c] text-white text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-center space-x-2 group min-h-[44px]"
             >
               <span>Request Trade Pricing</span>
               <ArrowUpRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -142,7 +142,7 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
 
             <Link
               href={`/bulk-orders?product=${product.slug}`}
-              className="flex-1 py-3.5 px-6 border border-stone-300 hover:border-stone-900 text-[#1C2C40] text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all duration-200 flex items-center justify-center space-x-2 hover:bg-stone-50 group"
+              className="w-full sm:flex-1 py-3.5 px-6 border border-stone-300 hover:border-stone-900 text-[#1C2C40] text-xs sm:text-sm font-semibold uppercase tracking-wider rounded-full transition-all duration-200 flex items-center justify-center space-x-2 hover:bg-stone-50 group min-h-[44px]"
             >
               <span>Bulk Order Enquiry</span>
               <ArrowUpRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-stone-400 group-hover:text-stone-900" />
@@ -153,12 +153,12 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
       </div>
 
       {/* Detailed Technical Specifications Table */}
-      <div className="mt-16 sm:mt-24 pt-12 border-t border-stone-200">
-        <h3 className="font-serif text-2xl sm:text-3xl text-[#1C2C40] mb-6 tracking-tight">
+      <div className="mt-12 sm:mt-20 lg:mt-24 pt-8 sm:pt-12 border-t border-stone-200">
+        <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-[#1C2C40] mb-4 sm:mb-6 tracking-tight">
           Technical Specifications & Ingredients
         </h3>
-        <div className="bg-[#FAF7F2] rounded-2xl p-6 sm:p-8 border border-stone-200/90 shadow-sm overflow-x-auto">
-          <table className="w-full text-left text-xs sm:text-sm divide-y divide-stone-200">
+        <div className="bg-[#FAF7F2] rounded-2xl p-4 sm:p-6 lg:p-8 border border-stone-200/90 shadow-sm smooth-scroll-x">
+          <table className="w-full min-w-[420px] sm:min-w-0 text-left text-xs sm:text-sm divide-y divide-stone-200">
             <tbody className="divide-y divide-stone-200">
               <tr>
                 <td className="py-3 font-semibold text-stone-800 w-1/3">Common Name</td>
@@ -192,13 +192,13 @@ export const ProductDetailView: React.FC<ProductDetailViewProps> = ({
       {/* Related Products */}
       {relatedProducts.length > 0 && (
         <div className="mt-16 sm:mt-24 pt-12 border-t border-stone-200">
-          <div className="flex items-center justify-between mb-8">
-            <h3 className="font-serif text-2xl sm:text-3xl text-[#1C2C40] tracking-tight">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 sm:mb-8">
+            <h3 className="font-serif text-xl sm:text-2xl md:text-3xl text-[#1C2C40] tracking-tight">
               Explore Other Colours
             </h3>
             <Link
               href="/products"
-              className="text-xs uppercase tracking-wider font-semibold text-[#C9184A] hover:underline"
+              className="text-xs uppercase tracking-wider font-semibold text-[#C9184A] hover:underline inline-flex items-center"
             >
               View all products ↗
             </Link>
