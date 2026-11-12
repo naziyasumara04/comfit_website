@@ -7,13 +7,13 @@ let inMemoryProducts: Product[] = [...INITIAL_PRODUCTS];
 
 export async function getProducts(options?: { activeOnly?: boolean; featuredOnly?: boolean }): Promise<Product[]> {
   try {
-    // If in browser, prefer fresh data from /api/products or Supabase
+    // If in browser, prefer fresh data from /api/products
     if (typeof window !== 'undefined') {
       try {
         const queryParams = new URLSearchParams();
         if (options?.activeOnly !== undefined) queryParams.set('active', String(options.activeOnly));
         if (options?.featuredOnly !== undefined) queryParams.set('featured', String(options.featuredOnly));
-
+        
         const res = await fetch(`/api/products?${queryParams.toString()}`, { cache: 'no-store' });
         if (res.ok) {
           const data = await res.json();
